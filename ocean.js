@@ -19,14 +19,14 @@ const salmons = Array.from(document.querySelectorAll('.grid div'))
 //here is the creatures, pretty much numbered them on the grid// 
 
 const oceanCreature = [
-  0,1,2,3,4,5,6,7,8,9,
-  15,16,17,18,19,20,21,22,23,24,
-  30,31,32,33,34,35,36,37,38,39
+  0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+  15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+  30, 31, 32, 33, 34, 35, 36, 37, 38, 39
 ]
 
 function draw() {
   for (let i = 0; i < oceanCreature.length; i++) {
-    if(!creaturesRemoved.includes(i)) {
+    if (!creaturesRemoved.includes(i)) {
       salmons[oceanCreature[i]].classList.add('creature')
     }
   }
@@ -50,12 +50,12 @@ salmons[currentShipIndex].classList.add('ship')
 
 function moveShip(e) {
   salmons[currentShipIndex].classList.remove('ship')
-  switch(e.key) {
+  switch (e.key) {
     case 'ArrowLeft':
-      if (currentShipIndex % width !== 0) currentShipIndex -=1
+      if (currentShipIndex % width !== 0) currentShipIndex -= 1
       break
-    case 'ArrowRight' :
-      if (currentShipIndex % width < width -1) currentShipIndex +=1
+    case 'ArrowRight':
+      if (currentShipIndex % width < width - 1) currentShipIndex += 1
       break
   }
   salmons[currentShipIndex].classList.add('ship')
@@ -66,20 +66,20 @@ document.addEventListener('keydown', moveShip)
 
 function moveCreature() {
   const leftEdge = oceanCreature[0] % width === 0
-  const rightEdge = oceanCreature[oceanCreature.length - 1] % width === width -1
+  const rightEdge = oceanCreature[oceanCreature.length - 1] % width === width - 1
   remove()
 
   if (rightEdge && goingRight) {
     for (let i = 0; i < oceanCreature.length; i++) {
-      oceanCreature[i] += width +1
+      oceanCreature[i] += width + 1
       direction = -1
       goingRight = false
     }
   }
 
-  if(leftEdge && !goingRight) {
+  if (leftEdge && !goingRight) {
     for (let i = 0; i < oceanCreature.length; i++) {
-      oceanCreature[i] += width -1
+      oceanCreature[i] += width - 1
       direction = 1
       goingRight = true
     }
@@ -91,7 +91,7 @@ function moveCreature() {
 
   draw()
 
-//now to utilize the results header and give the player a counter and messages for when they win or lose//
+  //now to utilize the results header and give the player a counter and messages for when they win or lose//
 
   if (salmons[currentShipIndex].classList.contains('creature', 'ship')) {
     resultsDisplay.innerHTML = 'YOU DIED'
@@ -99,7 +99,7 @@ function moveCreature() {
   }
 
   for (let i = 0; i < oceanCreature.length; i++) {
-    if(oceanCreature[i] > (salmons.length)) {
+    if (oceanCreature[i] > (salmons.length)) {
       resultsDisplay.innerHTML = 'YOU DIED'
       clearInterval(creatureId)
     }
@@ -119,14 +119,18 @@ function shoot(e) {
   function moveTorpedo() {
     salmons[currentTorpedoIndex].classList.remove('torpedo')
     currentTorpedoIndex -= width
+    if (currentTorpedoIndex < 0) {
+      currentTorpedoIndex = 0;
+    } else {
     salmons[currentTorpedoIndex].classList.add('torpedo')
+    }
 
     if (salmons[currentTorpedoIndex].classList.contains('creature')) {
       salmons[currentTorpedoIndex].classList.remove('torpedo')
       salmons[currentTorpedoIndex].classList.remove('creature')
       salmons[currentTorpedoIndex].classList.add('boom')
 
-      setTimeout(()=> salmons[currentTorpedoIndex].classList.remove('boom'), 400)
+      setTimeout(() => salmons[currentTorpedoIndex].classList.remove('boom'), 400)
       clearInterval(torpedoId)
 
       const oceanRemoved = oceanCreature.indexOf(currentTorpedoIndex)
@@ -139,7 +143,7 @@ function shoot(e) {
 
   }
   //keyboard command for shooting//
-  switch(e.key) {
+  switch (e.key) {
     case 's':
       torpedoId = setInterval(moveTorpedo, 100)
   }
