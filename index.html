@@ -1,17 +1,25 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--google font link for sono font that i felt matched a arcade-ish look, also in my css for good measure-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sono&display=swap" rel="stylesheet">
   <title>Ocean Defenders</title>
+<!--dont forget the css link-->
   <link rel="stylesheet" href="ocean.css">
 
+  
 </head>
 <body>
+<!--header for the point system and to display a win loss message when enemies are defeated or not-->
   <h1 class="results">0</h1>
+  <p>Creatures from the deep are headed for the surface! Defeat them!</p>
   <div class="grid"></div>
-  <script src="ocean.js"></script>
-  <script src="./ship.png"></script>
+  <!--the js link is below the grid div to keep those to together-->
+  <script src="ocean.js"></script>  
 </body>
 </html>

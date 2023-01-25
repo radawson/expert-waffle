@@ -1,3 +1,4 @@
+//so right away i started with defining what i feel like i need, the grid for the game, the results for points and win/loss, where my ship is on the grid, creature id, what happens when we hit the wall, something to remove creatures//
 const grid = document.querySelector('.grid')
 const resultsDisplay = document.querySelector('.results')
 let currentShipIndex = 202
@@ -14,6 +15,8 @@ for (let i = 0; i < 225; i++) {
 }
 
 const salmons = Array.from(document.querySelectorAll('.grid div'))
+
+//here is the creatures, pretty much numbered them on the grid// 
 
 const oceanCreature = [
   0,1,2,3,4,5,6,7,8,9,
@@ -36,11 +39,14 @@ function remove() {
     salmons[oceanCreature[i]].classList.remove('creature')
   }
 }
+//creation of my ship! still trying to figure out how to turn this into an image//
 
 salmons[currentShipIndex].classList.add('ship')
 
 
 
+//now that the ship is here it makes sense to let the player move the ship right//
+//i went with arrow keys instead of 'a', 'd' because those werent working for me//
 
 function moveShip(e) {
   salmons[currentShipIndex].classList.remove('ship')
@@ -55,6 +61,8 @@ function moveShip(e) {
   salmons[currentShipIndex].classList.add('ship')
 }
 document.addEventListener('keydown', moveShip)
+
+//now i have to make the creatures move on their onw just like in space invaders, a simple linear path down to the player//
 
 function moveCreature() {
   const leftEdge = oceanCreature[0] % width === 0
@@ -83,6 +91,8 @@ function moveCreature() {
 
   draw()
 
+//now to utilize the results header and give the player a counter and messages for when they win or lose//
+
   if (salmons[currentShipIndex].classList.contains('creature', 'ship')) {
     resultsDisplay.innerHTML = 'YOU DIED'
     clearInterval(creatureId)
@@ -95,11 +105,13 @@ function moveCreature() {
     }
   }
   if (creaturesRemoved.length === oceanCreature.length) {
-    resultsDisplay.innerHTML = 'YOU WIN'
+    resultsDisplay.innerHTML = 'YOU WON!!WOOO!!'
     clearInterval(creatureId)
   }
 }
 creatureId = setInterval(moveCreature, 600)
+
+//and now we have to code a weapon! torpedoes since we are underwater, and i should add a simple animation for the explosion and to keep the creatures gone until the round is over//
 
 function shoot(e) {
   let torpedoId
@@ -114,7 +126,7 @@ function shoot(e) {
       salmons[currentTorpedoIndex].classList.remove('creature')
       salmons[currentTorpedoIndex].classList.add('boom')
 
-      setTimeout(()=> salmons[currentTorpedoIndex].classList.remove('boom'), 300)
+      setTimeout(()=> salmons[currentTorpedoIndex].classList.remove('boom'), 400)
       clearInterval(torpedoId)
 
       const oceanRemoved = oceanCreature.indexOf(currentTorpedoIndex)
@@ -126,8 +138,9 @@ function shoot(e) {
     }
 
   }
+  //keyboard command for shooting//
   switch(e.key) {
-    case 'ArrowUp':
+    case 's':
       torpedoId = setInterval(moveTorpedo, 100)
   }
 }

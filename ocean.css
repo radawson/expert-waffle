@@ -1,32 +1,48 @@
+/* body tag to choose font i found from google fonts (the header link i copied wasnt working but the css one google had worked right away) */
+body {
+	font-family: 'Sono', sans-serif;
+	font-size: 20px;
+	background-color: #E2E4F6;
+}
+
+/* the grid is the actual square im using to hold my game instead of trying to navigate an entire webpage*/
 .grid {
 	width: 300px;
 	height: 300px;
-	border: solid black 1px;
+	border: solid black 3px;
+	align-items: center;
 	display: flex;
 	flex-wrap: wrap;
     align-items: center;
+	/*background img tag to put a cool underwater scenery in the grid*/
+	background-image: url('trench.jpg');
 }
-
+/*the second grid div is for the elements inside */
 .grid div {
 	width: 20px;
 	height: 20px;
 }
 
 .creature {
-	background-color: purple;
-	border-radius: 10px;
+	/* background-image: url('creature.jpg'); */
+	background-color: #7371FC;
+	border-radius: 20px;
 }
 
 .ship {
-	background-color: blue;
+	/* background-image: url('ship.png'); */
+	/*this color is gray X 11 gray which sounds like a ships color  */
+	background-color: #C1BFB5;
     
 }
 
 .torpedo {
-	background-color: orange;
+	/*coolers.co calls this color tangerine which reminded me of bullet train so*/
+	background-color: #F18701;
 }
 
 .boom {
-	background-color: red;
+	/*sea creatures probably dont go boom so i went with like a green color kinda like from alien, this one was called sea green */
+	background-color: #0C8346;
 }
 
