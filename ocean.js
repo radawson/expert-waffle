@@ -1,5 +1,6 @@
 //so right away i started with defining what i feel like i need, the grid for the game, the results for points and win/loss, where my ship is on the grid, creature id, what happens when we hit the wall, something to remove creatures//
 const grid = document.querySelector('.grid')
+const ship = document.querySelector('.ship')
 const resultsDisplay = document.querySelector('.results')
 let currentShipIndex = 202
 let width = 15
@@ -119,8 +120,11 @@ function shoot(e) {
   function moveTorpedo() {
     salmons[currentTorpedoIndex].classList.remove('torpedo')
     currentTorpedoIndex -= width
+    if (currentTorpedoIndex < 0) {
+      currentTorpedoIndex = 0;
+    } else {
     salmons[currentTorpedoIndex].classList.add('torpedo')
-
+    }
     if (salmons[currentTorpedoIndex].classList.contains('creature')) {
       salmons[currentTorpedoIndex].classList.remove('torpedo')
       salmons[currentTorpedoIndex].classList.remove('creature')

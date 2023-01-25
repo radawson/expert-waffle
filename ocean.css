@@ -7,8 +7,8 @@ body {
 
 /* the grid is the actual square im using to hold my game instead of trying to navigate an entire webpage*/
 .grid {
-	width: 300px;
-	height: 300px;
+	width: 600px;
+	height: 600px;
 	border: solid black 3px;
 	align-items: center;
 	display: flex;
@@ -19,8 +19,8 @@ body {
 }
 /*the second grid div is for the elements inside */
 .grid div {
-	width: 20px;
-	height: 20px;
+	width: 40px;
+	height: 40px;
 }
 
 .creature {
@@ -33,6 +33,7 @@ body {
 	/* background-image: url('ship.png'); */
 	/*this color is gray X 11 gray which sounds like a ships color  */
 	background-color: #C1BFB5;
+	
     
 }
 
