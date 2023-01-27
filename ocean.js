@@ -122,14 +122,17 @@ creatureId = setInterval(moveCreature, 600)
 function shoot(e) {
   let torpedoId
   let currentTorpedoIndex = currentShipIndex
+
   function moveTorpedo() {
     salmons[currentTorpedoIndex].classList.remove('torpedo')
     currentTorpedoIndex -= width
+
     if (currentTorpedoIndex < 0) {
       currentTorpedoIndex = 0;
     } else {
     salmons[currentTorpedoIndex].classList.add('torpedo')
     }
+    
     if (salmons[currentTorpedoIndex].classList.contains('creature')) {
       salmons[currentTorpedoIndex].classList.remove('torpedo')
       salmons[currentTorpedoIndex].classList.remove('creature')
