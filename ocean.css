@@ -22,27 +22,32 @@ body {
 	width: 40px;
 	height: 40px;
 }
-
+/*so i got the images to work ! just had to actually resize the images themselves!*/
+/*all the images i used are from free pixel sites and the background image was also a free sample form its original scroll form*/
 .creature {
-	/* background-image: url('creature.jpg'); */
+	background-image: url('creature.jpg');
 	background-color: #7371FC;
 	border-radius: 20px;
 }
 
 .ship {
-	background-image: url('ship.png'); 
+	background-image: url('ship.png');
 	/*this color is gray X 11 gray which sounds like a ships color  */
-	/* background-color: #C1BFB5; */
+	background-color: #C1BFB5;
+	
     
 }
 
 .torpedo {
 	/*coolers.co calls this color tangerine which reminded me of bullet train so*/
 	background-color: #F18701;
+	background-image: url('torpedo.jpg');
+	opacity: 80%;
 }
 
 .boom {
 	/*sea creatures probably dont go boom so i went with like a green color kinda like from alien, this one was called sea green */
 	background-color: #0C8346;
+	background-image: url('creaturegoo.jpg');
 }
 

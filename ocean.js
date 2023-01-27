@@ -1,5 +1,6 @@
 //so right away i started with defining what i feel like i need, the grid for the game, the results for points and win/loss, where my ship is on the grid, creature id, what happens when we hit the wall, something to remove creatures//
 const grid = document.querySelector('.grid')
+const ship = document.querySelector('.ship')
 const resultsDisplay = document.querySelector('.results')
 let currentShipIndex = 202
 let width = 15
@@ -60,9 +61,13 @@ function moveShip(e) {
   }
   salmons[currentShipIndex].classList.add('ship')
 }
+
+//need the event listener for the ships movements as well
+
 document.addEventListener('keydown', moveShip)
 
 //now i have to make the creatures move on their onw just like in space invaders, a simple linear path down to the player//
+//the if statements keep the creature from ending up passing the 'wall' and disappearing into the void//
 
 function moveCreature() {
   const leftEdge = oceanCreature[0] % width === 0
@@ -112,19 +117,22 @@ function moveCreature() {
 creatureId = setInterval(moveCreature, 600)
 
 //and now we have to code a weapon! torpedoes since we are underwater, and i should add a simple animation for the explosion and to keep the creatures gone until the round is over//
+//i used class list to pretty much create and remove the objects and while i did make it sorta weird for myself to turn them into images, this was good practice for me to get more comfortable with JS//
 
 function shoot(e) {
   let torpedoId
   let currentTorpedoIndex = currentShipIndex
+
   function moveTorpedo() {
     salmons[currentTorpedoIndex].classList.remove('torpedo')
     currentTorpedoIndex -= width
+
     if (currentTorpedoIndex < 0) {
       currentTorpedoIndex = 0;
     } else {
     salmons[currentTorpedoIndex].classList.add('torpedo')
     }
-
+    
     if (salmons[currentTorpedoIndex].classList.contains('creature')) {
       salmons[currentTorpedoIndex].classList.remove('torpedo')
       salmons[currentTorpedoIndex].classList.remove('creature')
@@ -148,5 +156,5 @@ function shoot(e) {
       torpedoId = setInterval(moveTorpedo, 100)
   }
 }
-
+//need to add the event listener for they key being pushed//
 document.addEventListener('keydown', shoot)
