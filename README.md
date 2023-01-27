@@ -20,7 +20,7 @@ I only have one weapon for the one ship and there are 30 sea creatures to defeat
 I used an if statement to keep the creatures from disappearing into the void (outside the grid) and my instructor helped me use that same logic to keep my torpedoes from flying into the void as well! 
 
 
-I utulized a lot more JS, and used the classes to create the 'objects' and just added a background image for the classes in CSS.
+I utilized a lot more JS, and used the classes to create the 'objects' and just added a background image for the classes in CSS.
 I am still learning, and although there were a ton of examples and tutorials on how to make the game on reddit, google, etc. none of them made much sense to me since there was A LOT of codes and commands i just did not know yet...
 
 The HTML contains the 'results' header, as well as the link for the sono font from googles free fonts.
