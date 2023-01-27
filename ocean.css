@@ -23,6 +23,7 @@ body {
 	height: 40px;
 }
 /*so i got the images to work ! just had to actually resize the images themselves!*/
+/*all the images i used are from free pixel sites and the background image was also a free sample form its original scroll form*/
 .creature {
 	background-image: url('creature.jpg');
 	background-color: #7371FC;
